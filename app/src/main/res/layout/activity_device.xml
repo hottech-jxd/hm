@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
+    tools:context="com.hm.android.hmapp.device.DeviceActivity">
+
+    <LinearLayout
+        android:id="@+id/layheader"
+        android:background="@color/header_line_color"
+        android:paddingBottom="1dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/layout_header"/>
+    </LinearLayout>
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_below="@id/layheader"
+        android:id="@+id/device_toppicture"
+        app:placeholderImageScaleType="fitCenter"
+        app:placeholderImage="@mipmap/none"
+        app:failureImageScaleType="fitCenter"
+        app:failureImage="@mipmap/none"
+        app:actualImageScaleType="fitCenter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:padding="0dp"
+        android:layout_below="@id/device_toppicture"
+        android:id="@+id/device_recyclerView"
+        android:background="@color/bg_gray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    
+    <com.hm.android.hmapp.ProgressWidget
+        android:visibility="gone"
+        android:id="@+id/device_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>
