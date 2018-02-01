@@ -3,9 +3,11 @@ package com.hm.android.hmapp.main;
 
 import com.hm.android.hmapp.bean.DeviceResult;
 import com.hm.android.hmapp.bean.UserBean;
+import com.hm.android.hmapp.bean.infoAll;
 import com.hm.android.hmapp.mvp.IView;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 版权所有:杭州火图科技有限公司
@@ -20,5 +22,7 @@ import java.util.List;
 public interface IMainView extends IView {
         void mainCallback(List<DeviceResult> object);
 
-        void updateTriggerCallback(Object object);
+        void updateTriggerCallback(Map object);
+
+        void getRealJKCallback(List<infoAll> infoAll);
 }

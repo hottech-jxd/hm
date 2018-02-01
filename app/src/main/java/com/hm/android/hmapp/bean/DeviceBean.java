@@ -18,6 +18,9 @@ public class DeviceBean {
     private String longitude;
     private String isonline;
 
+    private boolean enabled;
+
+
     public String getPukId() {
         return pukId;
     }
@@ -112,5 +115,13 @@ public class DeviceBean {
 
     public void setIsonline(String isonline) {
         this.isonline = isonline;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

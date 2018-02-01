@@ -6,6 +6,7 @@ import android.os.Handler;
 
 import com.hm.android.hmapp.BaseActivity;
 import com.hm.android.hmapp.BaseApplication;
+import com.hm.android.hmapp.login.LoginActivity;
 import com.hm.android.hmapp.main.MainActivity;
 import com.hm.android.hmapp.R;
 import com.hm.android.hmapp.bean.Constants;
@@ -40,12 +41,14 @@ public class SplashActivity extends BaseActivity<ISplashPresenter> implements IS
                 .inject(this);
 
         //iPresenter.init();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                gotoActivity();
-            }
-        },3000);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                gotoActivity();
+//            }
+//        },2000);
+
+        gotoActivity();
     }
 
 
@@ -108,7 +111,7 @@ public class SplashActivity extends BaseActivity<ISplashPresenter> implements IS
 //            bundlePush = getIntent().getBundleExtra(Constants.INTENT_PUSH_KEY);
 //        }
 
-        skipActivityNeedLogin(MainActivity.class );
+        skipActivityNeedLogin(LoginActivity.class );
     }
 
 

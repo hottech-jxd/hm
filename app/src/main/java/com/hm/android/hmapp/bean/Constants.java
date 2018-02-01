@@ -20,10 +20,19 @@ public class Constants {
 
     public static String BASE_URL="http://114.115.218.197:10030/YQKJ_IPC_Web_IOT/";
 
+    public static String INTENT_DEVICE_ID="intent_device_id";
 
+    public static String INTENT_EnterpriseName="intent_enterpricename";
+    public static String INTENT_DEVICETYPE="intent_devicetype";
+    public static String INTENT_AUTOLOGIN="intent_autologin";
 
     public static String PREF_FILENAME="pref_filename_cashloan";
     public static String PREF_USER="pref_user";
+
+    public static String PREF_USERNAME="pref_username";
+    public static String PREF_PASSWORD="pref_password";
+
+
 
     public static String PREF_COOKIE="JSESSIONID";
 }

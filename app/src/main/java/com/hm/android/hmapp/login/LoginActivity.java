@@ -2,6 +2,7 @@ package com.hm.android.hmapp.login;
 
 import android.Manifest;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,8 @@ import com.hm.android.hmapp.utils.GsonUtil;
 import com.hm.android.hmapp.utils.PreferenceHelper;
 
 import org.greenrobot.eventbus.EventBus;
+import org.w3c.dom.Text;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -42,7 +45,7 @@ public class LoginActivity extends BaseActivity<ILoginPresenter> implements ILog
 //    ErrorWidget loginError;
 //    @BindView(R.id.login_lay_qrcode)
 //    FrameLayout loginLayQrcode;
-
+    boolean autologin=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,13 +64,29 @@ public class LoginActivity extends BaseActivity<ILoginPresenter> implements ILog
         //EventBus.getDefault().register(this);
 
         PreferenceHelper.writeString(BaseApplication.single , Constants.PREF_FILENAME , Constants.PREF_USER , "");
+        PreferenceHelper.writeStringSet(BaseApplication.single , Constants.PREF_FILENAME , Constants.PREF_COOKIE , null);
         BaseApplication.single.setUserBean(null);
+
+
+        String username = PreferenceHelper.readString(BaseApplication.single,Constants.PREF_FILENAME , Constants.PREF_USERNAME , "");
+        loginPhone.setText(username);
+        String password = PreferenceHelper.readString(BaseApplication.single,Constants.PREF_FILENAME , Constants.PREF_PASSWORD,"");
+        loginPassword.setText(password);
+
+        if(getIntent()!=null && getIntent().hasExtra(Constants.INTENT_AUTOLOGIN)){
+            autologin = getIntent().getBooleanExtra(Constants.INTENT_AUTOLOGIN , false);
+        }
+
 
         DaggerLoginComponent.builder()
                 .appComponent(BaseApplication.single.getAppComponent())
                 .loginModule(new LoginModule(this))
                 .build()
                 .injectLogin(this);
+
+        if( autologin && !TextUtils.isEmpty( username ) && !TextUtils.isEmpty(password)){
+            iPresenter.login(username , password);
+        }
     }
 
     @Override
@@ -143,20 +162,13 @@ public class LoginActivity extends BaseActivity<ILoginPresenter> implements ILog
         String json = GsonUtil.getGson().toJson(userBean);
         PreferenceHelper.writeString( this , Constants.PREF_FILENAME , Constants.PREF_USER ,  json);
         BaseApplication.single.setUserBean( userBean);
+        PreferenceHelper.writeString(this,Constants.PREF_FILENAME , Constants.PREF_USERNAME , userBean.getUserName());
+        PreferenceHelper.writeString(this, Constants.PREF_FILENAME , Constants.PREF_PASSWORD , userBean.getUserPwd());
 
         //setJpushAlias( userBean );
 
         gotoActivity();
     }
-
-//    /**
-//     * 登录成功，设置极光推送的别名为 手机号
-//     * @param userBean
-//     */
-//    private void setJpushAlias(UserBean userBean){
-//        PushHelper.bindingUserId(  String.valueOf( userBean.getUserId()) , userBean.getUserName() , "","" ,"" );
-//    }
-
 
     protected void gotoActivity(){
 

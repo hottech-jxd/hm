@@ -3,6 +3,7 @@ package com.hm.android.hmapp;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
@@ -53,6 +54,9 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         lifecycleSubject.onNext(ActivityEvent.CREATE);
+        //禁止横屏
+        setRequestedOrientation( ActivityInfo.SCREEN_ORIENTATION_PORTRAIT );
+
         setStatusBarTextBlackColor();
         setContentView();
         initView();
@@ -201,6 +205,13 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     protected void skipActivity(Class classz , String key , Bundle bundle){
         Intent intent=new Intent(this , classz);
         intent.putExtra(key , bundle);
+        startActivity(intent);
+        this.finish();
+    }
+
+    protected void skipActivity(Class classz , String key , boolean booleanv ){
+        Intent intent=new Intent(this , classz);
+        intent.putExtra(key , booleanv );
         startActivity(intent);
         this.finish();
     }

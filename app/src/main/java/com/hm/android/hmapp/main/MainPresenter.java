@@ -1,16 +1,19 @@
 package com.hm.android.hmapp.main;
 
 
+import android.test.mock.MockApplication;
 import android.text.TextUtils;
 
 import com.hm.android.hmapp.bean.Constants;
 import com.hm.android.hmapp.bean.DeviceResult;
 import com.hm.android.hmapp.bean.UserBean;
+import com.hm.android.hmapp.bean.infoAll;
 import com.hm.android.hmapp.login.ILoginModel;
 import com.hm.android.hmapp.login.ILoginPresenter;
 import com.hm.android.hmapp.login.ILoginView;
 
 import java.util.List;
+import java.util.Map;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -75,14 +78,47 @@ public class MainPresenter implements IMainPresenter {
 
     @Override
     public void updateTrigger(String pubId , String datavale ) {
-        iMainModel.updateTrigger(pubId , datavale , new Observer<Object>() {
+        iMainModel.updateTrigger(pubId , datavale , new Observer<Map>() {
             @Override
             public void onSubscribe(Disposable d) {
                 iMainView.showProgress(Constants.TIP_LOADING);
             }
 
             @Override
-            public void onNext(Object objectApiResult) {
+            public void onNext(Map objectApiResult) {
+                iMainView.hideProgress();
+
+                if(objectApiResult ==null ){
+                    iMainView.error( "请求错误" );
+                }else{
+                    iMainView.updateTriggerCallback(objectApiResult);
+                }
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                iMainView.hideProgress();
+                iMainView.error(e.getMessage());
+            }
+
+            @Override
+            public void onComplete() {
+                iMainView.hideProgress();
+            }
+        });
+    }
+
+    @Override
+    public void getRealJK(String deviceId) {
+        iMainModel.getRealJK(deviceId , new Observer<List<infoAll>>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                iMainView.showProgress(Constants.TIP_LOADING);
+            }
+
+            @Override
+            public void onNext(List<infoAll> objectApiResult) {
                 iMainView.hideProgress();
 //                if(objectApiResult.getResultCode() != ApiResultCodeEnum.SUCCESS.getCode()){
 //                    iLoginView.error( objectApiResult.getResultMsg());
@@ -93,7 +129,7 @@ public class MainPresenter implements IMainPresenter {
                 if(objectApiResult ==null ){
                     iMainView.error( "请求错误" );
                 }else{
-                    iMainView.updateTriggerCallback(objectApiResult);
+                    iMainView.getRealJKCallback(objectApiResult);
                 }
 
             }

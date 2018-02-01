@@ -19,4 +19,6 @@ public interface IMainPresenter extends IPresenter {
 
 
     void updateTrigger(String pubId , String dataValue);
+
+    void getRealJK(String deviceId);
 }

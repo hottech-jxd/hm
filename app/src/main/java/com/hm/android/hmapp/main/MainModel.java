@@ -3,10 +3,12 @@ package com.hm.android.hmapp.main;
 import com.hm.android.hmapp.api.ApiService;
 import com.hm.android.hmapp.bean.DeviceResult;
 import com.hm.android.hmapp.bean.UserBean;
+import com.hm.android.hmapp.bean.infoAll;
 import com.hm.android.hmapp.login.ILoginModel;
 import com.trello.rxlifecycle2.LifecycleProvider;
 
 import java.util.List;
+import java.util.Map;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -46,16 +48,25 @@ public class MainModel implements IMainModel {
     }
 
     @Override
-    public void updateTrigger(String pubId , String dataValue , Observer<Object> observer) {
-        Observable<Object> apiResultObservable = apiService.updateTigger( pubId, dataValue );
+    public void updateTrigger(String pubId , String dataValue , Observer<Map> observer) {
+        Observable<Map> apiResultObservable = apiService.updateTigger( pubId, dataValue );
 
         apiResultObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .compose( lifecycleProvider.<Object>bindToLifecycle() )
+                .compose( lifecycleProvider.<Map>bindToLifecycle() )
                 .subscribe(observer);
 
     }
 
+    @Override
+    public void getRealJK(String deviceId, Observer<List<infoAll>> observer) {
+        Observable<List<infoAll>> apiResultObservable = apiService.getRealJK( deviceId );
+
+        apiResultObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .compose( lifecycleProvider.<infoAll>bindToLifecycle() )
+                .subscribe(observer);
+    }
 
     @Override
     public void onDestory() {

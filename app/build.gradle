@@ -7,15 +7,33 @@ android {
         minSdkVersion 14
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        config {
+            keyAlias "jinxiangdong"
+            keyPassword "jinxiangdong"
+            storeFile file('../key/key.jks')
+            storePassword "jinxiangdong"
+        }
+    }
+
     buildTypes {
+        debug{
+            signingConfig signingConfigs.config
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
+
+
+
 }
 
 dependencies {

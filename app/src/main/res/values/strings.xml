@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">hmapp</string>
+    <string name="app_name">智能家具App</string>
 
 
     <item name="statusbarutil_fake_status_bar_view" type="id" />

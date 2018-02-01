@@ -3,9 +3,11 @@ package com.hm.android.hmapp.main;
 
 import com.hm.android.hmapp.bean.DeviceResult;
 import com.hm.android.hmapp.bean.UserBean;
+import com.hm.android.hmapp.bean.infoAll;
 import com.hm.android.hmapp.mvp.IModel;
 
 import java.util.List;
+import java.util.Map;
 
 import io.reactivex.Observer;
 
@@ -24,5 +26,7 @@ public interface IMainModel extends IModel {
     void main(String userId , Observer<List<DeviceResult>> observer);
 
 
-    void updateTrigger(String pubId , String dataValue , Observer<Object> observer);
+    void updateTrigger(String pubId , String dataValue , Observer<Map> observer);
+
+    void getRealJK(String deviceId , Observer<List<infoAll>> observer);
 }

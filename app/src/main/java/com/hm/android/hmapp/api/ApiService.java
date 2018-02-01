@@ -4,6 +4,7 @@ package com.hm.android.hmapp.api;
 import com.hm.android.hmapp.bean.ApiResult;
 import com.hm.android.hmapp.bean.DeviceResult;
 import com.hm.android.hmapp.bean.UserBean;
+import com.hm.android.hmapp.bean.infoAll;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -62,7 +63,17 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST("TiggerInfoDBO/updateTigger")
-    Observable<Object> updateTigger(@Field("pukId") String pukId , @Field("dataValue") String dataValue);
+    Observable<Map> updateTigger(@Field("pukId") String pukId , @Field("dataValue") String dataValue);
+
+
+    /**
+     * 查询某一设备的所有参数
+     * @param deviceId
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("SensorInfoDBO/getRealJK")
+    Observable<List<infoAll>> getRealJK(@Field("deviceId") String deviceId);
 
 //
 //    /**

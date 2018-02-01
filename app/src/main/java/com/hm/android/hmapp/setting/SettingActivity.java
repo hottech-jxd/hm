@@ -14,6 +14,7 @@ import com.hm.android.hmapp.BaseActivity;
 import com.hm.android.hmapp.BaseApplication;
 import com.hm.android.hmapp.BuildConfig;
 import com.hm.android.hmapp.R;
+import com.hm.android.hmapp.bean.CloseEvent;
 import com.hm.android.hmapp.bean.Constants;
 import com.hm.android.hmapp.login.LoginActivity;
 import com.hm.android.hmapp.mvp.IView;
@@ -49,6 +50,8 @@ public class SettingActivity extends BaseActivity
     TextView setting_username;
     @BindView(R.id.setting_version)
     TextView setting_version;
+    @BindView(R.id.setting_devicetype)
+    TextView setting_devicetype;
 
 
     private String headImgUrl;
@@ -78,6 +81,12 @@ public class SettingActivity extends BaseActivity
         setting_username.setText(BaseApplication.single.getUserBean().getUserName());
         setting_version.setText(BuildConfig.VERSION_NAME);
 
+        if(getIntent()!=null && getIntent().hasExtra(Constants.INTENT_EnterpriseName)){
+            setting_customer.setText( getIntent().getStringExtra(Constants.INTENT_EnterpriseName) );
+        }
+        if(getIntent()!=null && getIntent().hasExtra(Constants.INTENT_DEVICETYPE)){
+            setting_devicetype.setText(getIntent().getStringExtra(Constants.INTENT_DEVICETYPE));
+        }
 
 //        DaggerMyComponent
 //                .builder()
@@ -94,8 +103,9 @@ public class SettingActivity extends BaseActivity
     })
     public void onViewClicked(View v){
         if(v.getId()==R.id.setting_quit){
-            //EventBus.getDefault().post(new LogoutEvent() );
-            skipActivity(LoginActivity.class);
+            EventBus.getDefault().post(new CloseEvent() );
+            Boolean autoLogin = false;
+            skipActivity(LoginActivity.class , Constants.INTENT_AUTOLOGIN , autoLogin );
         }else if(v.getId()==R.id.header_left){
             this.finish();
         }
