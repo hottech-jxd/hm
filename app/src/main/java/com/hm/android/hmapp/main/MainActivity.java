@@ -58,8 +58,8 @@ public class MainActivity extends BaseActivity<IMainPresenter> implements IMainV
     TextView header_title;
     @BindView(R.id.header_right_image)
     ImageView header_right_image;
-//    @BindView(R.id.main_recyclerView)
-//    RecyclerView main_recyclerview;
+    @BindView(R.id.main_recyclerView)
+    RecyclerView main_recyclerview;
 //    @BindView(R.id.main_toppicture)
 //    SimpleDraweeView main_toppicture;
     @BindView(R.id.tv_anfang)
@@ -111,11 +111,11 @@ public class MainActivity extends BaseActivity<IMainPresenter> implements IMainV
 //        main_toppicture.setImageURI(uri);
 
 
-//        emptyView = LayoutInflater.from(this).inflate(R.layout.layout_empty , (ViewGroup) main_recyclerview.getParent() , false);
-//        ImageView emptyImage = emptyView.findViewById(R.id.empty_image);
-//        emptyImage.setImageResource(R.mipmap.empty);
-//        TextView emptyText = emptyView.findViewById(R.id.empty_text);
-//        emptyText.setText("暂无数据");
+        emptyView = LayoutInflater.from(this).inflate(R.layout.layout_empty , (ViewGroup) main_recyclerview.getParent() , false);
+        ImageView emptyImage = emptyView.findViewById(R.id.empty_image);
+        emptyImage.setImageResource(R.mipmap.empty);
+        TextView emptyText = emptyView.findViewById(R.id.empty_text);
+        emptyText.setText("暂无数据");
 
 
 
@@ -135,17 +135,21 @@ public class MainActivity extends BaseActivity<IMainPresenter> implements IMainV
 
         mainAdapter=new MainAdapter(manus);
 
-//        mainAdapter.setEmptyView(emptyView);
+        mainAdapter.setEmptyView(emptyView);
 
 
-//        main_recyclerview.setLayoutManager(new GridLayoutManager(this ,2));
-//        main_recyclerview.setAdapter(mainAdapter);
+        main_recyclerview.setLayoutManager(new GridLayoutManager(this ,2));
+        main_recyclerview.setAdapter(mainAdapter);
 
 
-//        GridDivider.Builder builder = new GridDivider.Builder(this , 2);
-//        builder.setmDivider(new ColorDrawable(ContextCompat.getColor(this , R.color.space_color)));
-//        main_recyclerview.addItemDecoration( builder.build());
-//        mainAdapter.setOnItemClickListener(this);
+        GridDivider.Builder builder = new GridDivider.Builder(this , 2);
+        builder.setmDivider(new ColorDrawable(ContextCompat.getColor(this , R.color.space_color)));
+        int h = DensityUtils.dip2px(this , 10);
+        builder.setV_spacing(h);
+        builder.setH_spacing(h);
+
+        main_recyclerview.addItemDecoration( builder.build());
+        mainAdapter.setOnItemClickListener(this);
 
 
         DaggerMainComponent
@@ -258,33 +262,33 @@ public class MainActivity extends BaseActivity<IMainPresenter> implements IMainV
         mainAdapter.setNewData( object.get(0).getLoadDevices() );
 
 
-        DeviceBean deviceBean = object.get(0).getLoadDevices().get(0);
-        String deviceName = object.get(0).getLoadDevices().get(0).getDeviceName();
-
-        if(deviceName.equals("照明")){
-            isOpen_zhaoming=true;
-            zhaoming = deviceBean;
-        }else {
-            isOpen_zhaoming=false;
-        }
-        if(deviceName.equals("安防")){
-            isOpen_anfang=true;
-            anfang = deviceBean;
-        }else{
-            isOpen_anfang=false;
-        }
-        if(deviceName.equals("电器")){
-            isOpen_dianqi=true;
-            dianqi=deviceBean;
-        }else {
-            isOpen_dianqi=false;
-        }
-        if(deviceName.equals("门禁")){
-            isOpen_mengjin=true;
-            mengjin=deviceBean;
-        }else {
-            isOpen_mengjin=false;
-        }
+//        DeviceBean deviceBean = object.get(0).getLoadDevices().get(0);
+//        String deviceName = object.get(0).getLoadDevices().get(0).getDeviceName();
+//
+//        if(deviceName.equals("照明")){
+//            isOpen_zhaoming=true;
+//            zhaoming = deviceBean;
+//        }else {
+//            isOpen_zhaoming=false;
+//        }
+//        if(deviceName.equals("安防")){
+//            isOpen_anfang=true;
+//            anfang = deviceBean;
+//        }else{
+//            isOpen_anfang=false;
+//        }
+//        if(deviceName.equals("电器")){
+//            isOpen_dianqi=true;
+//            dianqi=deviceBean;
+//        }else {
+//            isOpen_dianqi=false;
+//        }
+//        if(deviceName.equals("门禁")){
+//            isOpen_mengjin=true;
+//            mengjin=deviceBean;
+//        }else {
+//            isOpen_mengjin=false;
+//        }
     }
 
     @Override

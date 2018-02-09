@@ -22,6 +22,15 @@ public class MainAdapter extends BaseQuickAdapter<DeviceBean, BaseViewHolder> {
 
     @Override
     protected void convert(BaseViewHolder helper, DeviceBean item) {
-        helper.setText(R.id.main_item_name, item.getDeviceName());
+        //helper.setText(R.id.main_item_name, item.getDeviceName());
+        if( item.getDeviceName().equals("照明") ){
+            helper.setBackgroundRes(R.id.main_item_bg , R.mipmap.zhaoming);
+        }else if(item.getDeviceName().equals("安防")){
+            helper.setBackgroundRes(R.id.main_item_bg , R.mipmap.anfang);
+        }else if(item.getDeviceName().equals("电器")){
+            helper.setBackgroundRes(R.id.main_item_bg,R.mipmap.dianqi);
+        }else if(item.getDeviceName().equals("门禁")){
+            helper.setBackgroundRes(R.id.main_item_bg , R.mipmap.menjin);
+        }
     }
 }
