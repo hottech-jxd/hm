@@ -24,12 +24,25 @@ public class DeviceAdapter extends BaseQuickAdapter<infos4, BaseViewHolder> {
 
     @Override
     protected void convert(BaseViewHolder helper, infos4 item) {
+
+        helper.setText( R.id.device_item_seq , String.valueOf( helper.getAdapterPosition()+1 ) );
+
         helper.setText(R.id.device_item_name, item.getParemeterName());
 
         String status = item.getDataValue();
         if(TextUtils.isEmpty(status))return;
 
-        helper.setBackgroundRes( R.id.device_item_status , status.equals("1") ? R.drawable.shape_red_circle : R.drawable.shape_green_circle );
+        //helper.setBackgroundRes( R.id.device_item_status , status.equals("1") ? R.drawable.shape_red_circle : R.drawable.shape_green_circle );
+
+        if( status.equals("1")){
+
+            helper.setBackgroundRes(R.id.device_item_status , R.drawable.shape_white_circle);
+            helper.setBackgroundRes(R.id.device_item_name , R.drawable.shape_blue_circle);
+
+        }else{
+            helper.setBackgroundRes(R.id.device_item_status , R.drawable.shape_trans_circle);
+            helper.setBackgroundRes(R.id.device_item_name , R.drawable.shape_organe_circle);
+        }
 
     }
 }

@@ -6,7 +6,7 @@
                  tools:context="com.hm.android.hmapp.login.LoginActivity"
                  android:layout_width="match_parent"
                  android:layout_height="match_parent"
-                    android:background="@color/bgcolor"
+                    android:background="@mipmap/bg3"
                  android:fitsSystemWindows="true"
                  android:clipToPadding="true">
 
@@ -22,11 +22,11 @@
 
             <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="160dp">
+        android:layout_height="150dp">
 
         <ImageView
             android:layout_alignParentBottom="true"
-            android:src="@mipmap/ic_launcher"
+            android:src="@mipmap/logo"
             android:layout_centerHorizontal="true"
             android:layout_width="80dp"
             android:layout_height="80dp"/>
@@ -42,6 +42,8 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:padding="10dp"
+            android:background="@drawable/shape_border_circle_coner"
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
@@ -50,21 +52,30 @@
                 android:src="@mipmap/phone"
                 android:layout_width="32dp"
                 android:layout_height="32dp"/>
+            <View
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="#C3C3C3"
+                android:layout_width="1dp"
+                android:layout_height="28dp"/>
             <EditText
                 android:id="@+id/login_phone"
                 android:layout_width="0dp"
-                android:hint="用户名称"
+                android:hint="请输入用户名"
+                android:textColor="@color/black"
                 android:text=""
                 android:background="@drawable/style_login_edittext"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
-        <View
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:background="#D6D6D6"
-            android:layout_height="1dp"/>
+        <!--<View-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:background="#D6D6D6"-->
+            <!--android:layout_height="1dp"/>-->
         <LinearLayout
+            android:background="@drawable/shape_border_circle_coner"
+            android:padding="10dp"
             android:layout_marginTop="15dp"
             android:orientation="horizontal"
             android:gravity="center_vertical"
@@ -74,9 +85,16 @@
                 android:src="@mipmap/password"
                 android:layout_width="32dp"
                 android:layout_height="32dp"/>
+            <View
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="#C3C3C3"
+                android:layout_width="1dp"
+                android:layout_height="28dp"/>
             <EditText
                 android:id="@+id/login_password"
                 android:layout_width="0dp"
+                android:textColor="@color/black"
                 android:inputType="textPassword"
                 android:hint="请输入密码"
                 android:text=""
@@ -85,11 +103,11 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
-        <View
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:background="#D6D6D6"
-            android:layout_height="1dp"/>
+        <!--<View-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:background="#D6D6D6"-->
+            <!--android:layout_height="1dp"/>-->
 
         <!--<TextView-->
             <!--android:id="@+id/login_forgetpassword"-->
@@ -105,9 +123,9 @@
             android:layout_marginTop="30dp"
             android:layout_marginBottom="10dp"
             android:id="@+id/login_login"
-            android:text="登录"
+            android:text="登 录"
             android:textSize="20sp"
-            android:background="@drawable/style_button_corner"
+            android:background="@drawable/style_login_button"
             android:textColor="@color/textColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -118,18 +136,13 @@
 
 
 
-
 </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>
 
 
 
-<!--<ImageView-->
-    <!--android:layout_alignParentBottom="true"-->
-    <!--android:background="@mipmap/botton"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content" />-->
+
 
 
     <com.hm.android.hmapp.ProgressWidget

@@ -121,7 +121,7 @@
             <LinearLayout
                 android:padding="10dp"
                 android:id="@+id/setting_lay_avatar"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="10dp"
                 android:background="@color/white"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -145,20 +145,7 @@
             </LinearLayout>
 
 
-            <TextView
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:padding="10dp"
-                android:textColor="@color/white"
-                android:textSize="17sp"
-                android:layout_alignParentBottom="true"
-                android:id="@+id/setting_quit"
-                android:background="@drawable/style_button_corner"
-                android:text="退出登录"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+
 
 
         </LinearLayout>
@@ -166,6 +153,20 @@
     </android.support.v4.widget.NestedScrollView>
 
 
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginLeft="0dp"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/setting_quit"
+        android:background="#0681C7"
+        android:text="退出登录"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 </RelativeLayout>

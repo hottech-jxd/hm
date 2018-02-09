@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -75,6 +76,7 @@ public class SettingActivity extends BaseActivity
 
         headerLeft.setImageResource(R.drawable.style_left_arrow);
         headerTitle.setText("设置");
+        headerTitle.setTextColor(ContextCompat.getColor(this , R.color.white));
 
 
         setting_customer.setText( BaseApplication.single.getUserBean().getJurisdiction() );

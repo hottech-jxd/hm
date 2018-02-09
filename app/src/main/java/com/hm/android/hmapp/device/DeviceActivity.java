@@ -51,8 +51,8 @@ public class DeviceActivity extends BaseActivity <IMainPresenter>
     TextView header_title;
     @BindView(R.id.device_recyclerView)
     RecyclerView device_recyclerview;
-    @BindView(R.id.device_toppicture)
-    SimpleDraweeView device_toppicture;
+//    @BindView(R.id.device_toppicture)
+//    SimpleDraweeView device_toppicture;
     @BindView(R.id.device_progress)
     ProgressWidget device_progress;
 
@@ -78,14 +78,15 @@ public class DeviceActivity extends BaseActivity <IMainPresenter>
 
         header_left.setImageResource(R.drawable.style_left_arrow);
 
-        header_title.setText("智能家具系统");
+        header_title.setText("照明系统");
+        header_title.setTextColor(ContextCompat.getColor(this , R.color.white));
 
-        int sw = DensityUtils.getScreenW(this);
-        int h = sw * 1/2;
-        ViewGroup.LayoutParams layoutParams = device_toppicture.getLayoutParams();
-        layoutParams.height = h;
-        layoutParams.width = sw;
-        device_toppicture.setLayoutParams(layoutParams);
+//        int sw = DensityUtils.getScreenW(this);
+//        int h = sw * 1/2;
+//        ViewGroup.LayoutParams layoutParams = device_toppicture.getLayoutParams();
+//        layoutParams.height = h;
+//        layoutParams.width = sw;
+//        device_toppicture.setLayoutParams(layoutParams);
 
 
         emptyView = LayoutInflater.from(this).inflate(R.layout.layout_empty , (ViewGroup) device_recyclerview.getParent() , false);
@@ -108,13 +109,19 @@ public class DeviceActivity extends BaseActivity <IMainPresenter>
 //        }
 
         deviceAdapter = new DeviceAdapter(data);
-        device_recyclerview.setLayoutManager(new GridLayoutManager(this,4));
+        device_recyclerview.setLayoutManager(new GridLayoutManager(this,2));
         device_recyclerview.setAdapter(deviceAdapter);
         deviceAdapter.setOnItemClickListener(this);
         deviceAdapter.isUseEmpty(false);
         deviceAdapter.setEmptyView(emptyView);
-        GridDivider.Builder builder = new GridDivider.Builder(this , 4);
-        builder.setmDivider(new ColorDrawable(ContextCompat.getColor(this , R.color.space_color)));
+        GridDivider.Builder builder = new GridDivider.Builder(this , 2);
+        builder.setmDivider(new ColorDrawable(ContextCompat.getColor(this , R.color.transparent)));
+
+        int h = DensityUtils.dip2px(this , 10);
+
+        builder.setH_spacing(h);
+        builder.setV_spacing(h);
+
         device_recyclerview.addItemDecoration( builder.build());
 
         DaggerMainComponent

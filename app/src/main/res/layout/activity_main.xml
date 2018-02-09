@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/bg"
     tools:context="com.hm.android.hmapp.main.MainActivity">
+
     <LinearLayout
+        app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/layheader"
-        android:background="@color/header_line_color"
         android:paddingBottom="1dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -15,24 +17,105 @@
         <include layout="@layout/layout_header"/>
     </LinearLayout>
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:layout_below="@id/layheader"
-        android:id="@+id/main_toppicture"
-        app:placeholderImageScaleType="fitCenter"
-        app:placeholderImage="@mipmap/none"
-        app:failureImageScaleType="fitCenter"
-        app:failureImage="@mipmap/none"
+    <!--<com.facebook.drawee.view.SimpleDraweeView-->
+        <!--android:layout_below="@id/layheader"-->
+        <!--android:id="@+id/main_toppicture"-->
+        <!--app:placeholderImageScaleType="fitCenter"-->
+        <!--app:placeholderImage="@mipmap/none"-->
+        <!--app:failureImageScaleType="fitCenter"-->
+        <!--app:failureImage="@mipmap/none"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content" />-->
+
+
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:padding="0dp"-->
+        <!--android:layout_below="@id/layout_header"-->
+        <!--android:id="@+id/main_recyclerView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/imageView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.5"-->
+        <!--app:layout_constraintVertical_bias="0.5"-->
+        <!--android:src="@mipmap/item" />-->
+
+    <RelativeLayout
+        android:id="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.5"
+        android:background="@mipmap/item"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
 
 
-    <android.support.v7.widget.RecyclerView
-        android:padding="0dp"
-        android:background="@color/bg_gray"
-        android:layout_below="@id/main_toppicture"
-        android:id="@+id/main_recyclerView"
+    <TextView
+
+        android:id="@+id/tv_zhaoming"
+        android:layout_width="131dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="150dp"
+        android:background="@color/colorPrimary"
+        android:text=""
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true" />
+
+
+    <LinearLayout
+        android:id="@+id/main_mid"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/tv_zhaoming"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_anfang"
+        android:layout_width="120dp"
+        android:layout_height="84dp"
+        android:background="@color/colorPrimary"
+        android:text=""
+        app:layout_editor_absoluteX="29dp"
+        app:layout_editor_absoluteY="239dp" />
+
+    <TextView
+        android:layout_marginLeft="50dp"
+        android:id="@+id/tv_dianqi"
+        android:layout_width="120dp"
+
+        android:layout_height="84dp"
+        android:background="@color/colorPrimary"
+        android:text=""
+       />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_mengjin"
+        android:layout_width="95dp"
+        android:layout_height="114dp"
+        android:text=""
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toBottomOf="@id/main_mid"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    </RelativeLayout>
 
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
