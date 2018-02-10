@@ -117,7 +117,7 @@ public class DeviceActivity extends BaseActivity <IMainPresenter>
         GridDivider.Builder builder = new GridDivider.Builder(this , 2);
         builder.setmDivider(new ColorDrawable(ContextCompat.getColor(this , R.color.transparent)));
 
-        int h = DensityUtils.dip2px(this , 10);
+        int h = DensityUtils.dip2px(this , 20);
 
         builder.setH_spacing(h);
         builder.setV_spacing(h);

@@ -63,17 +63,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
     <TextView
-
         android:id="@+id/tv_zhaoming"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@mipmap/zhaoming"
-        android:text=""
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true" />
+        android:text="" />
 
         <TextView
-            android:layout_marginLeft="0dp"
+            android:layout_marginLeft="8dp"
             android:id="@+id/tv_dianqi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -89,11 +88,13 @@
         android:gravity="center_horizontal"
         android:layout_height="wrap_content">
 
+
     <TextView
+        android:layout_marginLeft="8dp"
         android:id="@+id/tv_anfang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@mipmap/anfang"
+        android:background="@mipmap/anfang2"
         android:text="" />
 
         <TextView
