@@ -36,12 +36,12 @@ public class DeviceAdapter extends BaseQuickAdapter<infos4, BaseViewHolder> {
 
         if( status.equals("1")){
 
-            helper.setBackgroundRes(R.id.device_item_status , R.drawable.shape_white_circle);
-            helper.setBackgroundRes(R.id.device_item_name , R.drawable.shape_blue_circle);
-
-        }else{
             helper.setBackgroundRes(R.id.device_item_status , R.drawable.shape_trans_circle);
             helper.setBackgroundRes(R.id.device_item_name , R.drawable.shape_organe_circle);
+
+        }else{
+            helper.setBackgroundRes(R.id.device_item_status , R.drawable.shape_white_circle);
+            helper.setBackgroundRes(R.id.device_item_name , R.drawable.shape_blue_circle);
         }
 
     }
